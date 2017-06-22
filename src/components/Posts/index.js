@@ -1,17 +1,20 @@
 import React from 'react';
+import CircularProgress from 'material-ui/CircularProgress';
 
 export default class Post extends React.Component{
     constructor(props){
         super(props);
-        this.state={posts: [],gotPosts:false}
+        this.state={posts: [],gotPosts:false};
     }
     getPosts(){
-        fetch('http:://localhost:3000/api/posts',{
+        fetch('http://localhost:3000/api/posts',{
             headers: new Headers({
                 'Content-type' : 'application/json'
             })
         }).then(response => response.json()).then(data =>this.setState({posts: data,gotPosts:true})).then(() => console.log("Got users"))
     }
+
+    // componentDidMount() is invoked immediately after a component is mounted. Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request. Setting state in this method will trigger a re-rendering
     componentDidMount(){
         this.getPosts();
     }
@@ -29,7 +32,9 @@ export default class Post extends React.Component{
         // aqui va lo obtenido
         return(
             <div>
-                <p>{this.state.gotPosts ? posts : <h1>Aqui no hay nada lol</h1>}</p>
+            <div className="text-center">
+                {this.state.gotPosts ? posts : <CircularProgress/>}
+            </div>
             </div>
         );
     }
