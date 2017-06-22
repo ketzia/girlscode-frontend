@@ -4,9 +4,11 @@ import Home from './components/Home/main';
 import About from './components/About/main';
 import NavBar from './components/NavBar/main';
 import User from './components/Users/index';
-import Post from './components/Posts/index';
-import PostForm from './components/Posts/form';
+import createUser from './components/Users/create/create';
+import Blog from './components/Blog/index/index';
+import createPost from './components/Blog/create/create';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import 'react-bootstrap';
 import './App.css';
 
 class App extends Component {
@@ -17,9 +19,10 @@ class App extends Component {
               <NavBar/>
                 <Route exact path="/" component={Home}/>
                 <Route  path="/about" component={About}/>
-                <Route exact path="/blog" component ={Post}/>
+                <Route exact path="/blog" component ={Blog}/>
                 <Route path="/users" component={User}/>
-                <Route exact path="/blog/create" component={PostForm}/>
+                <Route exact path="/register" component={createUser}/>
+                <Route exact path="/blog/create" component={createPost}/>
            </div>
       </MuiThemeProvider>
     );

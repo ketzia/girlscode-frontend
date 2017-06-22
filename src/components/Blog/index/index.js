@@ -1,7 +1,7 @@
 import React from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
-export default class Post extends React.Component{
+export default class Blog extends React.Component{
     constructor(props){
         super(props);
         this.state={posts: [],gotPosts:false};

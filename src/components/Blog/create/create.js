@@ -1,6 +1,7 @@
 import React from 'react';
 
-class PostForm extends React.Component{
+
+class createPost extends React.Component{
 
     constructor(props) {
         super(props);
@@ -26,6 +27,7 @@ class PostForm extends React.Component{
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+                <div class = "form-group">
                 <label>
                     Title:
                     <input type="text" value={this.state.title} onChange={this.handleInputChange} />
@@ -35,10 +37,11 @@ class PostForm extends React.Component{
                     <input type="text" value={this.state.body} onChange={this.handleInputChange} />
                 </label>
                 <input type="submit" value="Submit" />
+                </div>
             </form>
         );
     }
 
 }
 
-export default PostForm;
+export default createPost;
