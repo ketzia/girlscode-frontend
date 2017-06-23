@@ -2,11 +2,13 @@ import React from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
 export default class Blog extends React.Component{
-    constructor(props){
+
+    constructor(props) {
         super(props);
         this.state={posts: [],gotPosts:false};
     }
-    getPosts(){
+
+    getPosts() {
         fetch('http://localhost:3000/api/posts',{
             headers: new Headers({
                 'Content-type' : 'application/json'
@@ -15,11 +17,11 @@ export default class Blog extends React.Component{
     }
 
     // componentDidMount() is invoked immediately after a component is mounted. Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request. Setting state in this method will trigger a re-rendering
-    componentDidMount(){
+    componentDidMount() {
         this.getPosts();
     }
 
-    render(){
+    render() {
 
         //aqui se obtienen
         let posts = this.state.posts.map(function(post){
@@ -29,6 +31,7 @@ export default class Blog extends React.Component{
                </li>
            );
         });
+
         // aqui va lo obtenido
         return(
             <div>

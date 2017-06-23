@@ -24,7 +24,7 @@ class createUser extends React.Component{
 
     handleInputChange(event){
         let target = event.target;
-        let value : target.value;
+        let value = target.value;
         let name = target.name;
 
         this.setState({
