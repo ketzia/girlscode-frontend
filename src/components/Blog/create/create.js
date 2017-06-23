@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import LinearProgress from 'material-ui/LinearProgress';
 
 class createPost extends React.Component{
 
@@ -77,9 +78,11 @@ class createPost extends React.Component{
             <div>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-6 col-md-offset-3">
+                        <div className="col-md-8 col-md-offset-2">
                             <h3 className="text-center">Create new Blog Post</h3>
-                            <hr/>
+                            <br/>
+                            <LinearProgress mode="indeterminate"/>
+                            <br/>
                             <form>
 
                                 <TextField

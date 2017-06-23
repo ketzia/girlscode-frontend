@@ -1,5 +1,6 @@
 import React from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 
 export default class Blog extends React.Component{
 

@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import LinearProgress from 'material-ui/LinearProgress';
 
 
 class createUser extends React.Component{
@@ -17,48 +18,109 @@ class createUser extends React.Component{
             <MenuItem key={4} value={4} primaryText="Master's" />,
             <MenuItem key={5} value={5} primaryText="PhD" />,
         ];
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleEducationLevel = this.handleEducationLevel.bind(this);
+        this.handleFirstnameChange = this.handleFirstnameChange.bind(this);
+        this.handleLastnameChange = this.handleLastnameChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     //try to investigate further about this
-
-    handleInputChange(event){
-        let target = event.target;
-        let value = target.value;
-        let name = target.name;
-
-        this.setState({
-            [name] :value
-        });
+    handleEmailChange(event){
+        const email = event.target.email;
+        this.setState({email:email});
     }
+    handleFirstnameChange(event){
+        const firstname = event.target.value;
+        this.setState({firstname:firstname});
+    }
+    handleLastnameChange(event){
+        const lastname = event.target.value;
+        this.setState({lastname:lastname});
+    }
+    handleUsernameChange(event){
+        const username = event.target.value;
+        this.setState({username:username});
+    }
+    handleEducationLevel(event){
+        const educationLevel = event.target.value;
+        this.setState({educationLevel:educationLevel});
+    }
+
 
     handleSubmit(event){
         event.preventDefault();
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div class = "form-group">
+            <div>
+                <br/>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6 col-md-offset-3">
+                            <div className="panel panel-default">
+                                    <h3 className="text-center" >Register</h3>
+                                     <br/>
+                                     <div className="panel-body">
+                                    <LinearProgress mode="indeterminate"/>
+                                <br/>
 
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <TextField input="text" hintText="Name" floatingLabelText="Name" value={this.state.firstname} />
-                             <br />
-                            <TextField input="text" hintText="Lastname" floatingLabelText="Lastname" value={this.state.lastname}/>
-                            <br />
-                            <TextField input="text" hintText="Username" floatingLabelText="Username" value={this.state.username}/>
-                            <br/>
-                            <TextField input="text" hintText="Email" floatingLabelText="Email" value={this.state.username}/>
-                            <br/>
-                            <SelectField value={this.state.educationLevel} onChange={this.handleChange} floatingLabelText="Education Level" floatingLabelFixed={true} hintText="Bachelor's">
-                                {this.items}
-                            </SelectField>
+                                    <form>
+
+                                        <TextField
+                                            hintText="Please enter your firstname"
+                                            floatingLabelText="Firstname"
+                                            fullWidth={true}
+                                            value={this.state.firstname}
+                                            onChange={this.handleFirstnameChange}
+                                        />
+                                        <TextField
+                                            hintText="Please enter your lastname"
+                                            floatingLabelText="Lastname"
+                                            fullWidth={true}
+                                            value={this.state.lastname}
+                                            onChange={this.handleLastnameChange}
+                                        />
+                                        <TextField
+                                            hintText="Please enter your username"
+                                            floatingLabelText="Username"
+                                            fullWidth={true}
+                                            value={this.state.username}
+                                            onChange={this.handleUsernameChange}
+                                        />
+                                        <TextField
+                                            hintText="Please enter your email"
+                                            floatingLabelText="Email"
+                                            fullWidth={true}
+                                            value={this.state.email}
+                                            onChange={this.handleEmailChange}
+
+                                        />
+                                        <br/>
+                                        <br/>
+                                        <SelectField
+                                            value={this.state.educationLevel}
+                                            onChange={this.handleEducationLevel}
+                                            floatingLabelText="Education Level"
+                                            >
+                                            {this.items}
+                                        </SelectField>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <div className="text-center">
+                                            <RaisedButton label="Register" primary={true} onTouchTap={this.handleSubmit}/>
+                                        </div>
+
+                                    </form>
+                                     </div>
+                            </div>
                         </div>
                     </div>
-                    <RaisedButton label="Register" secondary={true}  />
                 </div>
+            </div>
 
-            </form>
         );
     }
 
