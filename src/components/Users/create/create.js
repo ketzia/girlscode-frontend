@@ -12,11 +12,11 @@ class createUser extends React.Component{
         super(props);
         this.state = {firstname: '', lastname: '', username: '', email:'', educationLevel:''};
         this.items =  [
-            <MenuItem key={1} value={1} primaryText="Highschool" />,
-            <MenuItem key={2} value={2} primaryText="Middleschool" />,
-            <MenuItem key={3} value={3} primaryText="Bachelor's" />,
-            <MenuItem key={4} value={4} primaryText="Master's" />,
-            <MenuItem key={5} value={5} primaryText="PhD" />,
+            <MenuItem key={1} value={"HighSchool"} primaryText="Highschool" />,
+            <MenuItem key={2} value={"Middleschool"} primaryText="Middleschool" />,
+            <MenuItem key={3} value={"Bachelor's"} primaryText="Bachelor's" />,
+            <MenuItem key={4} value={"Master's"} primaryText="Master's" />,
+            <MenuItem key={5} value={"PhD"} primaryText="PhD" />,
         ];
         this.handleEducationLevel = this.handleEducationLevel.bind(this);
         this.handleFirstnameChange = this.handleFirstnameChange.bind(this);
@@ -27,7 +27,7 @@ class createUser extends React.Component{
     }
     //try to investigate further about this
     handleEmailChange(event){
-        const email = event.target.email;
+        const email = event.target.value;
         this.setState({email:email});
     }
     handleFirstnameChange(event){
@@ -42,15 +42,17 @@ class createUser extends React.Component{
         const username = event.target.value;
         this.setState({username:username});
     }
-    handleEducationLevel(event){
-        const educationLevel = event.target.value;
+    handleEducationLevel(event,index,value){
+        const educationLevel = value;
         this.setState({educationLevel:educationLevel});
     }
 
 
     handleSubmit(event){
         event.preventDefault();
+        console.log(this.state)
     }
+
     render() {
         return (
             <div>
@@ -94,7 +96,6 @@ class createUser extends React.Component{
                                             fullWidth={true}
                                             value={this.state.email}
                                             onChange={this.handleEmailChange}
-
                                         />
                                         <br/>
                                         <br/>
