@@ -21,10 +21,11 @@ export default class User extends React.Component{
     render(){
 
         //aqui se obtienen
+        //aqui se obtienen
         let users = this.state.users.map(function(user){
             return(
                 <li key={user.firstname} >
-                    {user.firstname}{user.lastname}
+                    {user.firstname}{user.lastname}{user._id}
                 </li>
             );
         });

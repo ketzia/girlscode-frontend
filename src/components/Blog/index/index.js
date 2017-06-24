@@ -2,6 +2,7 @@ import React from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import { Link } from 'react-router-dom';
+import Body from '../view/body';
 
 export default class Blog extends React.Component{
 
@@ -11,7 +12,7 @@ export default class Blog extends React.Component{
     }
 
     getPosts() {
-        fetch('http://localhost:8080/api/posts',{
+        fetch('http://localhost:3000/api/posts',{
             headers: new Headers({
                 'Content-type' : 'application/json'
             })
