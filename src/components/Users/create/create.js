@@ -20,7 +20,8 @@ class createUser extends React.Component{
             <MenuItem key={4} value={"Master's"} primaryText="Master's" />,
             <MenuItem key={5} value={"PhD"} primaryText="PhD" />,
         ];
-        const maxDate = new Date();
+
+        this.maxDate = new Date();
         this.handleEducationLevel = this.handleEducationLevel.bind(this);
         this.handleFirstnameChange = this.handleFirstnameChange.bind(this);
         this.handleLastnameChange = this.handleLastnameChange.bind(this);
@@ -49,8 +50,9 @@ class createUser extends React.Component{
         const educationLevel = value;
         this.setState({educationLevel:educationLevel});
     }
-    handleBirthdayChange(event){
-        //console.log(event.target.value);
+    handleBirthdayChange(event,date){
+        console.log("Event:"+event);
+        console.log("Date:"+date);
 
     }
 
@@ -140,8 +142,9 @@ class createUser extends React.Component{
                                         <DatePicker
                                             onChange={this.handleBirthdayChange}
                                             floatingLabelText="Birthday"
-                                            defaultDate={this.maxDate}
                                             disableYearSelection={false}
+                                            shouldDisableDate={this.disabledDates}
+                                            maxDate={this.maxDate}
                                         />
                                         <br/>
                                         <br/>
