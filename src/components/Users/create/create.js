@@ -3,6 +3,8 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import DatePicker from 'material-ui/DatePicker';
+import Toggle from 'material-ui/Toggle';
 import LinearProgress from 'material-ui/LinearProgress';
 
 
@@ -18,6 +20,7 @@ class createUser extends React.Component{
             <MenuItem key={4} value={"Master's"} primaryText="Master's" />,
             <MenuItem key={5} value={"PhD"} primaryText="PhD" />,
         ];
+        const maxDate = new Date();
         this.handleEducationLevel = this.handleEducationLevel.bind(this);
         this.handleFirstnameChange = this.handleFirstnameChange.bind(this);
         this.handleLastnameChange = this.handleLastnameChange.bind(this);
@@ -46,11 +49,37 @@ class createUser extends React.Component{
         const educationLevel = value;
         this.setState({educationLevel:educationLevel});
     }
+    handleBirthdayChange(event){
+        //console.log(event.target.value);
+
+    }
 
 
     handleSubmit(event){
-        event.preventDefault();
-        console.log(this.state)
+
+       // console.log(this.state)
+        fetch('http://localhost/3000/api/users', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                _id: this.id,
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
+                email : this.state.email,
+                username : this.state.username,
+                educationLevel : this.state.educationLevel
+            })
+        }).then(
+            function success(response){
+                console.log("Could send post request to server");
+            },
+            function error(response){
+                console.log("error");
+            }
+        );
     }
 
     render() {
@@ -108,6 +137,12 @@ class createUser extends React.Component{
                                         </SelectField>
                                         <br/>
                                         <br/>
+                                        <DatePicker
+                                            onChange={this.handleBirthdayChange}
+                                            floatingLabelText="Birthday"
+                                            defaultDate={this.maxDate}
+                                            disableYearSelection={false}
+                                        />
                                         <br/>
                                         <br/>
                                         <div className="text-center">

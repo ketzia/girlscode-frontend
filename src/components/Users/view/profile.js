@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CircularProgress from 'material-ui/CircularProgress';
 
 
@@ -35,6 +36,7 @@ class Profile extends React.Component{
                             {user.firstname}{user.lastname}
                             <br/>
                             {user.email}
+                            <br/><b><Link to={`/user/edit/${user._id}`} >Editar</Link></b>
                         </div>
                     </div>
                 </div>
