@@ -23,12 +23,7 @@ class createPost extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // El handle body change es una funcion que se manda a llamar cuando se modifica el textfield de body
-    // puedes ver que tiene el evento haciendole un console.log al evento
-    // basicamente el evento trae informacion sobre que elemento esta mandando ese evento, entre todas las cosas que trae, trae un ´target´
-    // El target es el elemento que estas modificando (osea el elemento que esta mandando a ejecutar un "evento") por eso tienes que hacer dos funciones diferentes (una para cada elemento, por que quieres dos eventos diferentes)
-    // En este caso el target es el input que tiene el titulo (puedes hacerle un console.log al target y vas a ver que te va a dar un <input type=text> etc... en la consola
-    // el .value es el valor literal dentro de ese input, por eso se lo asignas aqui, y tienes que hacer lo mismo para el title y cualqueir elemento que tengas, ya ves por que es importante reciclar componentes?
+
     handleBodyChange(event) {
         const body = event.target.value;
         this.setState({body: body})
@@ -39,15 +34,16 @@ class createPost extends React.Component{
         this.setState({title: title})
     }
 
-    // Aqui harias tu post al servidor, pasandole los parametros de la forma como argumento
+
     handleSubmit(event) {
 
         // Aqui puedes ver como se modifico el estado, antes de hacer el post deberias de validar si la informacion es correcta o si tienes algun elemento vacio
         // Osea validar la forma, checa la documentacion de material ui ahi debe de venir como hacerlo, tambien puedes validar cada input en su respectiva funcion ´onEquisElementoChange
         console.log(this.state);
 
+
         // hacer el post a tu servidor
-        fetch('https://mywebsite.com/endpoint/', {
+        fetch('http://localhost:3000/api/posts', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -57,7 +53,7 @@ class createPost extends React.Component{
                 title: this.state.title,
                 body: this.state.body,
             })
-            // teoricamente tambien deberia de funcionar si escribes esto ==>> body: this.state
+
         }).then(
             function success(response){
                 // handle error

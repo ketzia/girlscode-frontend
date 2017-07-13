@@ -59,7 +59,7 @@ class createUser extends React.Component{
 
     handleSubmit(event){
 
-       // console.log(this.state)
+        console.log(this.state);
         fetch('http://localhost/3000/api/users', {
             method: 'POST',
             headers: {
@@ -79,7 +79,7 @@ class createUser extends React.Component{
                 console.log("Could send post request to server");
             },
             function error(response){
-                console.log("error");
+                console.log("error fetching");
             }
         );
     }
