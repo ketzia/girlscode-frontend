@@ -57,9 +57,10 @@ class createPost extends React.Component{
         }).then(
             function success(response){
                 // handle error
+                console.log(response.body);
             },
             function error(response){
-                // handle success
+                console.log(response.body);
             }
         );
 

@@ -11,6 +11,7 @@ import Body from './components/Blog/view/body';
 import Profile from './components/Users/view/profile';
 import EditProfile from './components/Users/edit/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Auth from  'services/auth';
 import 'react-bootstrap';
 import './App.css';
 
